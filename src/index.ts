@@ -1,4 +1,3 @@
-import fetch, { Response as FetchResponse } from 'node-fetch';
 import formUrlEncoded from 'form-urlencoded'
 import jwt, { SigningKeyCallback, JwtHeader } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
@@ -31,9 +30,9 @@ export type Response = {
 }
 
 export class HTTPFetchError extends Error {
-  response: FetchResponse;
+  response: globalThis.Response;
 
-	constructor(response: FetchResponse) {
+	constructor(response: globalThis.Response) {
 		super(`HTTP Error Response: ${response.status} ${response.statusText}`);
 		this.response = response;
 	}

@@ -2,7 +2,21 @@
   "name": "eve-sso",
   "version": "2.0.2",
   "description": "Eve Online Single Sign On (SSO)",
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
   "author": "Michiel van der Velde <michiel@michielvdvelde.nl>",
   "homepage": "http://github.com/MichielvdVelde/eve-sso",
   "repository": {
@@ -13,7 +27,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=18"
   },
   "keywords": [
     "eve",
@@ -22,14 +36,20 @@
     "esi"
   ],
   "license": "MIT",
+  "scripts": {
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "build:esm": "tsc -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "clean": "rm -rf dist"
+  },
   "dependencies": {
     "form-urlencoded": "^6.1.4",
     "jsonwebtoken": "^9.0.2",
-    "jwks-rsa": "^3.1.0",
-    "node-fetch": "^2.7.0"
+    "jwks-rsa": "^3.1.0"
   },
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.13",
     "@types/jsonwebtoken": "^9.0.5",
-    "@types/node-fetch": "^2.6.10"
+    "typescript": "^5.9.3"
   }
 }
