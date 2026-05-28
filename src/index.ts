@@ -2,11 +2,8 @@ import formUrlEncoded from 'form-urlencoded'
 import jwt, { SigningKeyCallback, JwtHeader } from 'jsonwebtoken'
 import jwks from 'jwks-rsa'
 
-const { name, version, homepage } = require('../package')
-
 export type Options = {
   endpoint?: string,
-  userAgent?: string,
 }
 
 export type AccessToken = {
@@ -54,9 +51,9 @@ export default class SingleSignOn {
     clientId: string,
     secretKey: string,
     callbackUri: string,
+    userAgent: string,
     {
       endpoint,
-      userAgent,
     }: Options = {}
   ) {
     this.clientId = clientId
@@ -65,7 +62,7 @@ export default class SingleSignOn {
 
     this.endpoint = endpoint ?? ENDPOINT
     this.host = new URL(this.endpoint).hostname
-    this.userAgent = userAgent ?? `${name}@${version} - nodejs@${process.version} - ${homepage}`
+    this.userAgent = userAgent
 
     this.#jwks = jwks({
       jwksUri: `${this.endpoint}/oauth/jwks`,
