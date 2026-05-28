@@ -42,6 +42,7 @@ const SECRET = 'your secret'
 // The callback URI as defined in the application in the developers section
 const CALLBACK_URI = 'http://localhost:3001/sso'
 
+// See https://developers.eveonline.com/docs/services/esi/best-practices/
 const sso = new SingleSignOn(CLIENT_ID, SECRET, CALLBACK_URI, 'my-user-agent', {
   endpoint: 'https://login.eveonline.com', // optional, defaults to this
 })
