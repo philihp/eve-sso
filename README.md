@@ -42,9 +42,8 @@ const SECRET = 'your secret'
 // The callback URI as defined in the application in the developers section
 const CALLBACK_URI = 'http://localhost:3001/sso'
 
-const sso = new SingleSignOn(CLIENT_ID, SECRET, CALLBACK_URI, {
+const sso = new SingleSignOn(CLIENT_ID, SECRET, CALLBACK_URI, 'my-user-agent', {
   endpoint: 'https://login.eveonline.com', // optional, defaults to this
-  userAgent: 'my-user-agent' // optional
 })
 
 const app = new Koa()
