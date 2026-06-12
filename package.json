@@ -2,18 +2,18 @@
   "name": "@philihp/eve-sso",
   "version": "2.1.0",
   "description": "Eve Online Single Sign On (SSO)",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/cjs/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
@@ -37,9 +37,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run clean && npm run build:cjs && npm run build:esm",
-    "build:cjs": "tsc -p tsconfig.cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
-    "build:esm": "tsc -p tsconfig.esm.json && echo '{\"type\":\"module\"}' > dist/esm/package.json",
+    "build": "tsup",
     "clean": "rm -rf dist",
     "prepare": "npm run build"
   },
@@ -51,6 +49,7 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.13",
     "@types/jsonwebtoken": "^9.0.5",
+    "tsup": "^8.3.5",
     "typescript": "^5.9.3"
   }
 }
