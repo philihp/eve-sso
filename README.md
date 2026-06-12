@@ -1,5 +1,11 @@
 # Eve Single Sign On
 
+Version 2.1.0
+- Published as [@philihp/eve-sso](https://www.npmjs.com/package/@philihp/eve-sso)
+- Added ESM support; the package now ships both ESM and CJS builds
+- Replaced node-fetch with the native fetch API (requires Node 18+)
+- The user agent is now a required constructor argument
+
 Version 2.0.1
 - Downgraded node-fetch to v2 for better Typescript compatibilily (CJS not ESM)
 - Added "audience" to the JWT verification
@@ -20,7 +26,7 @@ see my module [eve-esi-client](https://github.com/MichielvdVelde/eve-esi).
 ## Install
 
 ```
-npm i eve-sso [--save]
+npm i @philihp/eve-sso
 ```
 
 ## Example
@@ -32,7 +38,7 @@ give you the required client ID and secret.
 A small example using koa.
 
 ```ts
-import SingleSignOn from './index'
+import SingleSignOn from '@philihp/eve-sso'
 import Koa from 'koa'
 import Router from 'koa-router'
 
