@@ -20,6 +20,6 @@ jobs:
           cache-dependency-path: package.json
       - run: npm install
       - run: npm run build
-      - run: npm publish --provenance --access public
+      - run: npm stage publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
