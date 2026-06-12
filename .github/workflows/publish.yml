@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish
 
 on:
   release:
@@ -8,28 +8,22 @@ on:
 # Trusted publishing to npm requires an OIDC token, and provenance
 # attestations are written to the public transparency log.
 permissions:
-  contents: read
   id-token: write
+  contents: read
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 24.x
           registry-url: https://registry.npmjs.org
-          cache: npm
-          cache-dependency-path: package.json
+          package-manager-cache: false  # never use caching in release builds
 
       # npm 11.5.1 required for OIDC staged publish. Remove once Microsoft updates their shit.
       - run: npm install -g npm@latest
       - run: npm install
       - run: npm run build
       - run: npm stage publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

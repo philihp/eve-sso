@@ -1,7 +1,7 @@
 {
   "name": "@philihp/eve-sso",
   "version": "2.1.0",
-  "description": "Eve Online Single Sign On (SSO)",
+  "description": "A simple EVE Online SSO provider for accessing ESI in your (java)scripts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -17,11 +17,14 @@
       }
     }
   },
-  "author": "Michiel van der Velde <michiel@michielvdvelde.nl>",
-  "homepage": "http://github.com/MichielvdVelde/eve-sso",
+  "authors": [
+    "Philihp Busby <philihp@gmail.com>",
+    "Michiel van der Velde <michiel@michielvdvelde.nl>"
+  ],
+  "homepage": "http://github.com/philihp/eve-sso",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MichielvdVelde/eve-sso.git"
+    "url": "git+https://github.com/philihp/eve-sso.git"
   },
   "files": [
     "dist"
@@ -30,10 +33,10 @@
     "node": ">=18"
   },
   "keywords": [
-    "eve",
-    "online",
+    "eve-online",
     "sso",
-    "esi"
+    "esi",
+    "esm"
   ],
   "license": "MIT",
   "scripts": {
