@@ -1,6 +1,6 @@
 {
-  "name": "eve-sso",
-  "version": "2.0.2",
+  "name": "@philihp/eve-sso",
+  "version": "2.1.0",
   "description": "Eve Online Single Sign On (SSO)",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
