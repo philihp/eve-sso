@@ -19,6 +19,9 @@ jobs:
           registry-url: https://registry.npmjs.org
           cache: npm
           cache-dependency-path: package.json
+
+      # npm 11.5.1 required for OIDC staged publish. Remove once Microsoft updates their shit.
+      - run: npm install -g npm@latest
       - run: npm install
       - run: npm run build
       - run: npm stage publish --provenance --access public
